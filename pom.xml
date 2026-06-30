@@ -8,11 +8,13 @@
 		<version>3.5.16</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>MyPDV</groupId>
-	<artifactId>FloorPDV</artifactId>
+    <groupId>io.github.lucasmfs11</groupId>
+	<artifactId>floor-pdv</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name/>
-	<description/>
+    <name>Floor PDV</name>
+    <description>
+        Modern POS system integrated with Bling ERP.
+    </description>
 	<url/>
 	<licenses>
 		<license/>
