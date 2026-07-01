@@ -1,5 +1,7 @@
 package io.github.lucasmfs11.floorpdv.controller;
 
+import io.github.lucasmfs11.floorpdv.dto.HealthResponse;
+import org.springframework.boot.info.BuildProperties;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,16 +9,22 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Map;
 
 @RestController
-@RequestMapping("/api/health")
+@RequestMapping("/api")
 public class HealthController {
 
-    @GetMapping
-    public Map<String, String> health() {
-        return Map.of(
+    private final BuildProperties buildProperties;
 
-                "status","UP",
-                "application","Floor PDV",
-                "version","0.1.0"
+    public HealthController(BuildProperties buildProperties) {
+        this.buildProperties = buildProperties;
+    }
+
+    @GetMapping("/health")
+    public HealthResponse getHealth() {
+        return new HealthResponse(
+                "UP",
+                "Floor PDV",
+                buildProperties.getVersion()
+
         );
     }
 
