@@ -1,8 +1,18 @@
-spring.application.name=api
-spring.datasource.url=jdbc:postgresql://localhost:5432/pdv
-spring.datasource.username=postgres
-spring.datasource.password=110505
+spring:
+  application:
+    name: api
 
-spring.jpa.hibernate.ddl-auto=update
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.format_sql=true
+  datasource:
+    url: jdbc:postgresql://localhost:5432/pdv
+    username: postgres
+    password: 110505
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+
+    show-sql: true
+
+    properties:
+      hibernate:
+        format_sql: true

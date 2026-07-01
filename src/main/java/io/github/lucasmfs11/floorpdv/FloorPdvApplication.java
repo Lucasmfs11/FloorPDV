@@ -1,13 +1,13 @@
-package MyPDV.api;
+package io.github.lucasmfs11.floorpdv;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ApiApplication {
+public class FloorPdvApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ApiApplication.class, args);
+		SpringApplication.run(FloorPdvApplication.class, args);
 	}
 
 }
