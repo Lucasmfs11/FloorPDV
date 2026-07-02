@@ -1,6 +1,6 @@
 spring:
   application:
-    name: api
+    name: floorpdv
 
   datasource:
     url: jdbc:postgresql://localhost:5432/pdv
