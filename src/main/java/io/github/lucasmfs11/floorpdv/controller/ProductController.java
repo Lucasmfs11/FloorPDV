@@ -2,9 +2,13 @@ package io.github.lucasmfs11.floorpdv.controller;
 
 
 import io.github.lucasmfs11.floorpdv.dto.ProductCreateRequest;
+import io.github.lucasmfs11.floorpdv.dto.ProductResponse;
 import io.github.lucasmfs11.floorpdv.entity.Product;
+import io.github.lucasmfs11.floorpdv.repository.ProductRepository;
 import io.github.lucasmfs11.floorpdv.service.ProductService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/products")
@@ -21,5 +25,9 @@ public class ProductController {
     public Product create(@RequestBody ProductCreateRequest request) {
         return productService.create(request);
 
+    }
+    @GetMapping
+    public List<ProductResponse> getAll() {
+        return productService.findAll();
     }
 }

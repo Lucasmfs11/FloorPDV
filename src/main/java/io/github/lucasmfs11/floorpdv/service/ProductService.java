@@ -1,11 +1,13 @@
 package io.github.lucasmfs11.floorpdv.service;
 
 import io.github.lucasmfs11.floorpdv.dto.ProductCreateRequest;
+import io.github.lucasmfs11.floorpdv.dto.ProductResponse;
 import io.github.lucasmfs11.floorpdv.entity.Product;
 import io.github.lucasmfs11.floorpdv.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 public class ProductService {
@@ -32,6 +34,28 @@ public class ProductService {
 
         return productRepository.save(product);
 
+    }
+
+    public List<ProductResponse> findAll() {
+        return productRepository.findAll()
+                .stream()
+                .map(this::toResponse)
+                .toList();
+        }
+
+        private ProductResponse toResponse(Product product) {
+
+        return new ProductResponse(
+                product.getId(),
+                product.getExternalErpId(),
+                product.getName(),
+                product.getSku(),
+                product.getEan(),
+                product.getPrice(),
+                product.getStock(),
+                product.getCostPrice()
+
+        );
     }
 
 }
