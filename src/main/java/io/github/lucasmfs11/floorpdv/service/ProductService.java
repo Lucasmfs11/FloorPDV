@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
+
+import static org.springframework.data.jpa.domain.AbstractPersistable_.id;
 
 @Service
 public class ProductService {
@@ -41,9 +44,9 @@ public class ProductService {
                 .stream()
                 .map(this::toResponse)
                 .toList();
-        }
+    }
 
-        private ProductResponse toResponse(Product product) {
+    private ProductResponse toResponse(Product product) {
 
         return new ProductResponse(
                 product.getId(),
@@ -56,6 +59,15 @@ public class ProductService {
                 product.getCostPrice()
 
         );
+
     }
 
-}
+    public ProductResponse findById(Long id) {
+        Product product = productRepository.findById(id)
+                .orElseThrow(() ->new RuntimeException("Product not found"));
+        return toResponse(product);
+    }
+
+
+    }
+

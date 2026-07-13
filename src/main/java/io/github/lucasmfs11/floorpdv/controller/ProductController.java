@@ -9,6 +9,7 @@ import io.github.lucasmfs11.floorpdv.service.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/products")
@@ -30,4 +31,11 @@ public class ProductController {
     public List<ProductResponse> getAll() {
         return productService.findAll();
     }
+    
+    @GetMapping("/{id}")
+    public ProductResponse getById(@PathVariable Long id) {
+        return productService.findById(id);
+    }
+
+    
 }
