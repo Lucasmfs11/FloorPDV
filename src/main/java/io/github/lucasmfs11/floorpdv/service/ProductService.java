@@ -3,6 +3,7 @@ package io.github.lucasmfs11.floorpdv.service;
 import io.github.lucasmfs11.floorpdv.dto.ProductCreateRequest;
 import io.github.lucasmfs11.floorpdv.dto.ProductResponse;
 import io.github.lucasmfs11.floorpdv.entity.Product;
+import io.github.lucasmfs11.floorpdv.exception.ProductNotFoundException;
 import io.github.lucasmfs11.floorpdv.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
@@ -64,7 +65,7 @@ public class ProductService {
 
     public ProductResponse findById(Long id) {
         Product product = productRepository.findById(id)
-                .orElseThrow(() ->new RuntimeException("Product not found"));
+                .orElseThrow(() ->new ProductNotFoundException(id));
         return toResponse(product);
     }
 
